@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>古籍</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+    }
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        z-index: 100;
+        display: inline-flex;
+    }
+    .header .header-title{
+        width: 70%;
+    }
+    .header .list{
+        width: 15%;
+        color: #666666;
+    }
+    .header .search{
+        width: 15%;
+        color: #666666;
+    }
+    .main{
+        margin-top: 50px;
+        padding: 10px;
+    }
+    .book-item{
+        position: relative;
+        display: inline-flex;
+        height: 150px;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 0 20px #eeeeee;
+        margin-bottom: 20px;
+    }
+    .book-item .book-score{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: orange;
+        color: #ffffff;
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .book-item .book-image{
+        box-sizing: border-box;
+        width: 28%;
+        height: 100%;
+    }
+    .book-item .book-image img{
+        height: 100%;
+        width: 100%;
+    }
+    .book-item .book-content{
+        box-sizing: border-box;
+        width: 72%;
+        height: 100%;
+        padding: 5px;
+    }
+    .book-item .book-content .book-title{
+        height: 40px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .book-item .book-content .book-author{
+        height: 30px;
+        line-height: 30px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        color: #b4976c;
+    }
+    .book-item .book-content .book-intro{
+        height: 70px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        color: #888888;
+        font-size: 15px;
+        line-height: 150%;
+    }
+    .book-item .book-content .book-intro .book-intro-title{
+        background-color: #62a717;
+        color: #ffffff;
+        border-radius: 4px;
+        padding: 0 4px;
+    }
+</style>
+<body>
+<div class="header">
+    <a href="" class="list"><i class="fa fa-bars"></i></a>
+    <span class="header-title">古籍</span>
+    <a href="" class="search"><i class="fa fa-search"></i></a>
+</div>
+<div class="main">
+    <div class="book-item">
+        <div class="book-score">9.8</div>
+        <div class="book-image">
+            <img src="../image/book_test.jpg" alt="红楼梦">
+        </div>
+        <div class="book-content">
+            <div class="book-title">红楼梦</div>
+            <div class="book-intro">
+                <span class="book-intro-title">导读</span>
+                <span>红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</span>
+                <span style="font-weight: bold;color: #666666">【莲花】</span>
+            </div>
+            <div class="book-author">
+                <span>清朝</span><span style="color: #666666"> | </span><span>盘应龙</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
