@@ -29,7 +29,7 @@
     .header .header-title{
         width: 70%;
     }
-    .header .list{
+    .header .select{
         width: 15%;
         color: #666666;
     }
@@ -106,10 +106,41 @@
         border-radius: 4px;
         padding: 0 4px;
     }
+    .select-zzc{
+        position: fixed;
+        z-index: 200;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        background-color: rgba(153,153,153,0.8);
+    }
+    .select-box{
+        height: 80%;
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 10%;
+        box-sizing: border-box;
+        background-color: #ffffff;
+    }
+    .book-type{
+        display: inline-flex;
+    }
+    .book-type-item{
+        border: 1px solid #e1e1e1;
+        border-radius: 5px;
+        display: block;
+        width: 50px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0 10px;
+    }
 </style>
 <body>
 <div class="header">
-    <a href="" class="list"><i class="fa fa-bars"></i></a>
+    <a href="" class="select"><i class="fa fa-bars"></i></a>
     <span class="header-title">古籍</span>
     <a href="" class="search"><i class="fa fa-search"></i></a>
 </div>
@@ -129,6 +160,39 @@
             <div class="book-author">
                 <span>清朝</span><span style="color: #666666"> | </span><span>盘应龙</span>
             </div>
+        </div>
+    </div>
+</div>
+<!--弹框-->
+<div class="select-zzc">
+    <div class="select-box">
+        <div><span>朝代</span></div>
+        <div class="book-type">
+            <span class="book-type-item">先秦</span>
+            <span class="book-type-item">三国</span>
+            <span class="book-type-item">唐朝</span>
+            <span class="book-type-item">宋朝</span>
+            <span class="book-type-item">元朝</span>
+            <span class="book-type-item">先秦</span>
+            <span class="book-type-item">三国</span>
+            <span class="book-type-item">唐朝</span>
+            <span class="book-type-item">宋朝</span>
+            <span class="book-type-item">元朝</span>
+        </div>
+        <div><span>类型</span></div>
+        <div class="book-type">
+            <span class="book-type-item">传记</span>
+            <span class="book-type-item">军事</span>
+            <span class="book-type-item">医药</span>
+            <span class="book-type-item">鬼神</span>
+            <span class="book-type-item">小传</span>
+            <span class="book-type-item">传说</span>
+            <span class="book-type-item">传记</span>
+            <span class="book-type-item">军事</span>
+            <span class="book-type-item">医药</span>
+            <span class="book-type-item">鬼神</span>
+            <span class="book-type-item">小传</span>
+            <span class="book-type-item">传说</span>
         </div>
     </div>
 </div>
