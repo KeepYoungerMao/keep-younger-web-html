@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>古籍详情</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+    }
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        z-index: 100;
+        display: inline-flex;
+        background-color: #ffffff;
+    }
+    .header .header-title{
+        width: 70%;
+    }
+    .header .select{
+        width: 15%;
+        color: #666666;
+    }
+    .header .search{
+        width: 15%;
+        color: #666666;
+    }
+    .main{
+        margin-top: 50px;
+    }
+    .book-src{
+        background-color: #7F5D58;
+        padding: 10px;
+    }
+    .book-src-top{
+        display: flex;
+        height: 150px;
+    }
+    .book-src-img{
+        width: 28%;
+        height: 100%;
+    }
+    .book-src-img img{
+        width: 100%;
+        height: 100%;
+    }
+    .book-src-content{
+        width: 72%;
+        height: 100%;
+    }
+    .book-src-content .book-title{
+        height: 40px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .book-src-content .book-author{
+        height: 30px;
+        line-height: 30px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        color: #e1e1e1;
+        font-size: 14px;
+    }
+    .book-order{
+        height: 30px;
+        line-height: 30px;
+        color: #9D5F00;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+    .book-order-pre{
+        background: linear-gradient(#FFF3E6, #FEF0B3);
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        padding: 2px 8px;
+    }
+    .book-order-fix{
+        background: linear-gradient(45deg, #FFD395, #FEC36E);
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        padding: 2px 8px;
+    }
+    .book-src-content .book-operation{
+        height: 50px;
+        box-sizing: border-box;
+        text-indent: 10px;
+        color: #ffffff;
+        font-size: 15px;
+        line-height: 150%;
+        padding: 10px;
+        display: inline-flex;
+        width: 100%;
+    }
+    .book-src-content .book-operation button{
+        margin-right: 6%;
+        width: 27%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        background-color: #ffffff;
+    }
+    .book-src-content .book-operation button i{
+        color: orange;
+        margin-right: 5px;
+    }
+    .book-src-pf{
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 4px;
+        padding: 10px 0;
+        margin: 10px 0;
+    }
+    .book-src-pf-title{
+        font-size: 14px;
+        height: 40px;
+        line-height: 30px;
+        color: #ffffff;
+        padding-left: 10px;
+    }
+    .book-src-pf-title sup{
+        color: #e1e1e1;
+        font-size: 12px;
+    }
+    .book-src-pf-src{
+        display: flex;
+        width: 100%;
+    }
+    .book-src-pf-src .pf-sz{
+        display: flex;
+        width: 50%;
+        height: 60px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        border-right: 1px solid #d3d3d3;
+    }
+    .pf-sz .pf-sz-result{
+        height: 60px;
+        width: 35%;
+        line-height: 60px;
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: bold;
+    }
+    .pf-sz .pf-sz-tx{
+        height: 50px;
+        width: 65%;
+        padding-left: 5px;
+    }
+    .pf-sz .pf-sz-tx .pf-sz-star{
+        height: 30px;
+        line-height: 40px;
+        font-size: 14px;
+        color: orange;
+    }
+    .pf-sz .pf-sz-tx .pf-sz-count{
+        height: 30px;
+        line-height: 20px;
+        font-size: 14px;
+        color: #d3d3d3;
+    }
+    .book-src-pf-src .pf-tx{
+        width: 50%;
+        font-size: 12px;
+        padding: 5px;
+        color: #c3c3c3;
+    }
+    .book-src-pf-src .pf-tx .pf-tx-row{
+        display: flex;
+        width: 100%;
+        height: 9px;
+    }
+    .book-src-pf-src .pf-tx .pf-tx-row .pf-tx-row-star{
+        width: 38%;
+        transform:scale(0.6);
+        text-align: right;
+        margin-bottom: 3px;
+    }
+    .book-src-pf-src .pf-tx .pf-tx-row .pf-tx-row-h{
+        width: 55%;
+        background-color: #c3c3c3;
+        height: 4px;
+        margin-top: 4px;
+        border-radius: 4px;
+    }
+    .book-src-pf-src .pf-tx .pf-tx-row .pf-tx-row-h span{
+        display: inline-block;
+        background-color: orange;
+        height: 4px;
+        border-radius: 4px;
+        vertical-align: top;
+    }
+    .book-src .book-src-price{
+        display: flex;
+        margin: 10px 0;
+        width: 100%;
+        color: #d3d3d3;
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+    .book-src .book-src-price .book-price-pre{
+        width: 50%;
+        text-align: left;
+        padding: 10px;
+        height: 32px;
+        line-height: 32px;
+    }
+    .book-src .book-src-price .book-price-fix{
+        width: 50%;
+        text-align: right;
+        padding: 10px;
+        height: 32px;
+        line-height: 32px;
+    }
+</style>
+<body>
+<div class="header">
+    <a href="javascript:void(0)" class="select"><i class="fa fa-chevron-left"></i></a>
+    <span class="header-title">红楼梦</span>
+    <a href="" class="search"><i class="fa fa-search"></i></a>
+</div>
+<div class="main">
+    <div class="book-src">
+        <div class="book-src-top">
+            <div class="book-src-img">
+                <img src="../image/book_test.jpg" alt="红楼梦">
+            </div>
+            <div class="book-src-content">
+                <div class="book-title">红楼梦</div>
+                <div class="book-author">
+                    <span>清朝</span>
+                    <span> | </span>
+                    <span>传记</span>
+                    <span> | </span>
+                    <span>盘应龙</span>
+                </div>
+                <div class="book-order">
+                    <span class="book-order-pre">No.12</span><span class="book-order-fix">读书总榜</span>
+                </div>
+                <div class="book-operation">
+                    <button><i class="fa fa-book"></i><span>阅读</span></button>
+                    <button><i class="fa fa-plus-square-o"></i><span>书签</span></button>
+                    <button><i class="fa fa-comment-o"></i><span>书评</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="book-src-pf">
+            <div class="book-src-pf-title">
+                <span>Keep Younger</span>
+                <sup>TM</sup>
+            </div>
+            <div class="book-src-pf-src">
+                <div class="pf-sz">
+                    <div class="pf-sz-result"><span>9.8</span></div>
+                    <div class="pf-sz-tx">
+                        <div class="pf-sz-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-sz-count">
+                            <span>120092</span>
+                            <span>人评分</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pf-tx">
+                    <div class="pf-tx-row">
+                        <div class="pf-tx-row-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-tx-row-h">
+                            <span style="width: 80%;"></span>
+                        </div>
+                    </div>
+                    <div class="pf-tx-row">
+                        <div class="pf-tx-row-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-tx-row-h">
+                            <span style="width: 10%;"></span>
+                        </div>
+                    </div>
+                    <div class="pf-tx-row">
+                        <div class="pf-tx-row-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-tx-row-h">
+                            <span style="width: 5%;"></span>
+                        </div>
+                    </div>
+                    <div class="pf-tx-row">
+                        <div class="pf-tx-row-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-tx-row-h">
+                            <span style="width: 3%;"></span>
+                        </div>
+                    </div>
+                    <div class="pf-tx-row">
+                        <div class="pf-tx-row-star">
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="pf-tx-row-h">
+                            <span style="width: 2%;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="book-src-price">
+            <div class="book-price-pre">
+                <span>本站购买</span>
+            </div>
+            <div class="book-price-fix">
+                <span>9.99元起</span>
+            </div>
+        </div>
+        <div class="book-src-price">
+            <div class="book-price-pre">
+                <span>其他电商购买</span>
+            </div>
+            <div class="book-price-fix">
+                <span>29.7元起</span>
+            </div>
+        </div>
+    </div>
+    <!--todo-->
+    <div class="book-intro">
+        <div class="book-intro-title">
+            <span>简介</span>
+        </div>
+        <div class="book-intro-content">
+            <p>《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经典。</p>
+            <p>由红楼梦研究所校注、人民文学出版社出版的《红楼梦》以庚辰（1760）本《脂砚斋重评石头记》为底本，以甲戌（1754）本、已卯（1759）本、蒙古王府本、戚蓼生序本、舒元炜序本、郑振铎藏本、红楼梦稿本、列宁格勒藏本（俄藏本）、程甲本、程乙本等众多版本为参校本，是一个博采众长、非常适合大众阅读的本子；同时，对底本的重要修改，皆出校记，读者可因以了解《红楼梦》的不同版本状况。</p>
+            <p>红学所的校注本已印行二十五年，其间1994年曾做过一次修订，又十几年过去，2008年推出修订第三版，体现了新的校注成果和科研成果。</p>
+            <p>关于《红楼梦》的作者，原本就有多种说法及推想，“前八十回曹雪芹著、后四十回高鹗续”的说法只是其中之一，这次修订中校注者改为“前八十回曹雪芹著；后四十回无名氏续，程伟元、高鹗整理”，应当是一种更科学的表述，体现了校注者对这一问题的新的认识。</p>
+            <p>现在这个修订后的《红楼梦》是更加完善。</p>
+            <span class="book-intro-operation">展开</span>
+        </div>
+    </div>
+    <div class="book-intro">
+        <div class="book-intro-title">
+            <span>书评</span>
+        </div>
+        <div class="book-intro-content">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
