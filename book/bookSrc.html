@@ -12,6 +12,7 @@
         margin: 0;
         padding: 0;
         font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+        background-color: #f1f1f1;
     }
     .header{
         position: fixed;
@@ -228,6 +229,81 @@
         height: 32px;
         line-height: 32px;
     }
+    .book-intro{
+        padding: 10px;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+    }
+    .book-intro .book-intro-title{
+        padding: 10px 0;
+        color: #818181;
+    }
+    .book-intro .book-intro-content{
+        color: #292929;
+    }
+    .book-intro .book-intro-content p{
+        margin: 10px 0;
+        line-height: 150%;
+        text-indent: 25px;
+    }
+    .book-intro .book-intro-operation{
+        float: right;
+        color: #42bd56;
+    }
+    .book-comment-i-like{
+        color: orange;
+    }
+    .book-comment-i-unlike{
+        color: #e1e1e1;
+    }
+    .book-comment-item{
+        display: flex;
+        padding: 10px 0;
+    }
+    .book-comment-item .book-comment-image{
+        width: 15%;
+        text-align: center;
+    }
+    .book-comment-item .book-comment-image img{
+        width: 60%;
+        border-radius: 50%;
+    }
+    .book-comment-item .book-comment-content{
+        width: 85%;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 10px;
+    }
+    .book-comment-item .book-comment-content .book-comment-title b{
+        font-size: 15px;
+        margin-right: 4px;
+    }
+    .book-comment-item .book-comment-content .book-comment-title i{
+        font-size: 14px;
+        letter-spacing: -2px;
+    }
+    .book-comment-item .book-comment-content .book-comment-title span{
+        font-size: 13px;
+        margin-left: 4px;
+        color: #888888;
+    }
+    .book-comment-item .book-comment-content p{
+        text-indent: 0;
+        font-size: 15px;
+    }
+    .book-comment-btn .book-comment-star{
+        float: left;
+        margin-left: 4px;
+        color: #a1a1a1;
+    }
+    .book-comment-btn .book-comment-star i{
+        margin-right: 8px;
+        color: #a1a1a1;
+    }
+    .book-comment-btn .book-comment-ot-operation{
+        float: right;
+        color: #a1a1a1;
+        padding: 2px 8px;
+    }
 </style>
 <body>
 <div class="header">
@@ -353,18 +429,17 @@
             </div>
         </div>
     </div>
-    <!--todo-->
     <div class="book-intro">
         <div class="book-intro-title">
             <span>简介</span>
         </div>
-        <div class="book-intro-content">
-            <p>《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经典。</p>
-            <p>由红楼梦研究所校注、人民文学出版社出版的《红楼梦》以庚辰（1760）本《脂砚斋重评石头记》为底本，以甲戌（1754）本、已卯（1759）本、蒙古王府本、戚蓼生序本、舒元炜序本、郑振铎藏本、红楼梦稿本、列宁格勒藏本（俄藏本）、程甲本、程乙本等众多版本为参校本，是一个博采众长、非常适合大众阅读的本子；同时，对底本的重要修改，皆出校记，读者可因以了解《红楼梦》的不同版本状况。</p>
-            <p>红学所的校注本已印行二十五年，其间1994年曾做过一次修订，又十几年过去，2008年推出修订第三版，体现了新的校注成果和科研成果。</p>
-            <p>关于《红楼梦》的作者，原本就有多种说法及推想，“前八十回曹雪芹著、后四十回高鹗续”的说法只是其中之一，这次修订中校注者改为“前八十回曹雪芹著；后四十回无名氏续，程伟元、高鹗整理”，应当是一种更科学的表述，体现了校注者对这一问题的新的认识。</p>
-            <p>现在这个修订后的《红楼梦》是更加完善。</p>
-            <span class="book-intro-operation">展开</span>
+        <div id="book-intro" class="book-intro-content">
+            <p>
+                《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，
+                描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。
+                结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现...
+                <a href="javascript:openBookIntro(this)"><span class="book-intro-operation">展开</span></a>
+            </p>
         </div>
     </div>
     <div class="book-intro">
@@ -372,9 +447,51 @@
             <span>书评</span>
         </div>
         <div class="book-intro-content">
-
+            <!--一个评论-->
+            <div class="book-comment-item">
+                <div class="book-comment-image">
+                    <img src="../image/user_test.jpg" alt="keep younger">
+                </div>
+                <div class="book-comment-content">
+                    <div class="book-comment-title">
+                        <b>星期六的晚上</b>
+                        <i class="fa fa-star book-comment-i-like"></i>
+                        <i class="fa fa-star book-comment-i-like"></i>
+                        <i class="fa fa-star book-comment-i-like"></i>
+                        <i class="fa fa-star book-comment-i-like"></i>
+                        <i class="fa fa-star book-comment-i-unlike"></i>
+                        <span>2个月前</span>
+                    </div>
+                    <div class="book-comment-src">
+                        <p>
+                            盛衰之理，本为天命。然而人心就是如此。眼见得他起高楼，于是便不忍心见他楼塌了。见过他鼎盛的时候，再看他的衰败就无比心酸。而更加可悲的...
+                            <a href="javascript:openBookComment(this)"><span class="book-intro-operation">展开</span></a>
+                        </p>
+                    </div>
+                    <div class="book-comment-btn">
+                        <span class="book-comment-star"><i class="fa fa-thumbs-o-up"></i>4400</span>
+                        <span class="book-comment-ot-operation"><i class="fa fa-ellipsis-h"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    let bookIntro = '<p>《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经典。</p>\n' +
+        '            <p>由红楼梦研究所校注、人民文学出版社出版的《红楼梦》以庚辰（1760）本《脂砚斋重评石头记》为底本，以甲戌（1754）本、已卯（1759）本、蒙古王府本、戚蓼生序本、舒元炜序本、郑振铎藏本、红楼梦稿本、列宁格勒藏本（俄藏本）、程甲本、程乙本等众多版本为参校本，是一个博采众长、非常适合大众阅读的本子；同时，对底本的重要修改，皆出校记，读者可因以了解《红楼梦》的不同版本状况。</p>\n' +
+        '            <p>红学所的校注本已印行二十五年，其间1994年曾做过一次修订，又十几年过去，2008年推出修订第三版，体现了新的校注成果和科研成果。</p>\n' +
+        '            <p>关于《红楼梦》的作者，原本就有多种说法及推想，“前八十回曹雪芹著、后四十回高鹗续”的说法只是其中之一，这次修订中校注者改为“前八十回曹雪芹著；后四十回无名氏续，程伟元、高鹗整理”，应当是一种更科学的表述，体现了校注者对这一问题的新的认识。</p>\n' +
+        '            <p>现在这个修订后的《红楼梦》是更加完善。</p>';
+    //古籍详情展开
+    function openBookIntro() {
+        $("#book-intro").html(bookIntro);
+    }
+    //展开书评
+    function openBookComment(e) {
+
+    }
+</script>
 </html>
