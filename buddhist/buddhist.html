@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>佛经</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+    }
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        z-index: 100;
+        display: inline-flex;
+        background-color: #ffffff;
+        box-shadow: 0 0 5px #d3d3d3;
+    }
+    .header .header-title{
+        width: 70%;
+    }
+    .header .select{
+        width: 15%;
+        color: #666666;
+    }
+    .header .search{
+        width: 15%;
+        color: #666666;
+    }
+    .main{
+        margin-top: 50px;
+    }
+    .buddhist-type{
+        height: 50px;
+        background-color: #f1f1f1;
+        display: flex;
+        width: 100%;
+        position: relative;
+    }
+    .buddhist-type:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: #ffffff;
+    }
+    .buddhist-type .buddhist-type-item{
+        width: 33.333%;
+        box-sizing: border-box;
+        text-align: center;
+        height: 46px;
+        line-height: 46px;
+        margin-top: 4px;
+        background-color: #f1f1f1;
+        border-radius: 8px;
+    }
+    .buddhist-type .buddhist-type-item-active{
+        background-color: #ffffff;
+    }
+</style>
+<body>
+<div class="header">
+    <a href="javascript:void(0)" class="select"><i class="fa fa-bars"></i></a>
+    <span class="header-title">佛经</span>
+    <a href="" class="search"><i class="fa fa-question-circle-o"></i></a>
+</div>
+<div class="main">
+    <div class="buddhist-type">
+        <div class="buddhist-type-item buddhist-type-item-active">净土五经</div>
+        <div class="buddhist-type-item">禅宗七经</div>
+        <div class="buddhist-type-item">经典佛经</div>
+    </div>
+    <div class="buddhist-content">
+        <div class="buddhist-title">
+            <span>净土五经乃佛教中的经典</span>
+        </div>
+        <div class="buddhist-list">
+            <div class="buddhist-list-item"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
