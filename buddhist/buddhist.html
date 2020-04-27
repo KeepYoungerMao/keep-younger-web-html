@@ -40,25 +40,28 @@
         color: #666666;
     }
     .main{
-        margin-top: 50px;
+        margin-top: 105px;
     }
     .buddhist-type{
-        height: 50px;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 55px;
         background-color: #f1f1f1;
         display: flex;
         width: 100%;
-        position: relative;
+        color: #7F5D58;
     }
     .buddhist-type:after{
-        content: "";
-        display: inline-block;
         position: absolute;
         top: 50%;
-        left: 0;
-        right: 0;
+        width: 100%;
         bottom: 0;
-        z-index: -1;
         background-color: #ffffff;
+        content: "";
+        z-index: -1;
     }
     .buddhist-type .buddhist-type-item{
         width: 33.333%;
@@ -68,10 +71,64 @@
         line-height: 46px;
         margin-top: 4px;
         background-color: #f1f1f1;
-        border-radius: 8px;
     }
     .buddhist-type .buddhist-type-item-active{
         background-color: #ffffff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid #e1e1e1;
+        border-bottom: none;
+    }
+    .buddhist-content{
+        padding: 10px;
+        display: none;
+    }
+    .buddhist-content-active{
+        display: block;
+    }
+    .buddhist-content .buddhist-tips{
+        background-color: #fefefe;
+        border: 1px solid #f1f1f1;
+        color: #666666;
+        font-size: 15px;
+        width: 80%;
+        margin-left: 10%;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .buddhist-list{
+        display: inline-flex;
+        width: 100%;
+    }
+    .buddhist-list-item{
+        width: 30%;
+        height: 170px;
+        position: relative;
+        margin-top: 20px;
+        margin-left: 2.5%;
+    }
+    .buddhist-list-item .buddhist-img{
+        width: 100%;
+        height: 100%;
+    }
+    .buddhist-list-item .buddhist-img img{
+        width: 100%;
+        height: 100%;
+    }
+    .buddhist-list-item .buddhist-title{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        background-color: rgba(0,0,0,0.2);
+        color: #ffffff;
+        font-size: 15px;
     }
 </style>
 <body>
@@ -82,18 +139,78 @@
 </div>
 <div class="main">
     <div class="buddhist-type">
-        <div class="buddhist-type-item buddhist-type-item-active">净土五经</div>
-        <div class="buddhist-type-item">禅宗七经</div>
-        <div class="buddhist-type-item">经典佛经</div>
+        <div class="buddhist-type-item buddhist-type-item-active" data-for="content1">净土五经</div>
+        <div class="buddhist-type-item" data-for="content2">禅宗七经</div>
+        <div class="buddhist-type-item" data-for="content3">经典佛经</div>
     </div>
-    <div class="buddhist-content">
-        <div class="buddhist-title">
-            <span>净土五经乃佛教中的经典</span>
+    <div id="content1" class="buddhist-content buddhist-content-active">
+        <div class="buddhist-tips">
+            <span>净土五经乃佛教中的经典之经典</span>
         </div>
         <div class="buddhist-list">
-            <div class="buddhist-list-item"></div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="content2" class="buddhist-content">
+        <div class="buddhist-tips">
+            <span>禅宗七经乃佛教中的经典 也是不可多得</span>
+        </div>
+        <div class="buddhist-list">
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦2</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦2</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦2</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="content3" class="buddhist-content">
+        <div class="buddhist-tips">
+            <span>这些个佛经就没有那么经典了 但好看</span>
+        </div>
+        <div class="buddhist-list">
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦3</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦3</span></div>
+            </div>
+            <div class="buddhist-list-item">
+                <div class="buddhist-img"><img src="../image/book_test.jpg" alt="红楼梦"></div>
+                <div class="buddhist-title"><span>红楼梦3</span></div>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    $(".buddhist-type-item").on("click",function () {
+        if (!$(this).hasClass("buddhist-type-item-active")){
+            $(this).siblings().removeClass("buddhist-type-item-active");
+            $(this).addClass("buddhist-type-item-active");
+            let _for = $(this).attr("data-for");
+            $("#"+_for).addClass("buddhist-content-active").siblings(".buddhist-content").removeClass("buddhist-content-active");
+        }
+    });
+</script>
 </html>

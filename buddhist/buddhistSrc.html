@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>佛经详情</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: tahoma, arial, 'Hiragino Sans GB', sans-serif;
+    }
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        z-index: 100;
+        display: inline-flex;
+        background-color: #ffffff;
+        box-shadow: 0 0 5px #d3d3d3;
+    }
+    .header .header-title{
+        width: 70%;
+    }
+    .header .select{
+        width: 15%;
+        color: #666666;
+    }
+    .header .search{
+        width: 15%;
+        color: #666666;
+    }
+    .main{
+        margin-top: 50px;
+    }
+    .buddhist-intro{
+        padding: 10px;
+        color: #292929;
+    }
+    .buddhist-intro p{
+        text-indent: 25px;
+        line-height: 150%;
+        margin: 12px 0;
+    }
+    .buddhist-head{
+        height: 270px;
+        width: 140px;
+        float: left;
+        padding: 0 2%;
+        border-right: 1px solid #e1e1e1;
+        border-bottom: 1px solid #e1e1e1;
+        margin: 0 15px 10px 0;
+    }
+    .buddhist-img{
+        height: 190px;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    .buddhist-img img{
+        width: 100%;
+        height: 100%;
+    }
+    .buddhist-title{
+        height: 60px;
+        width: 92%;
+    }
+    .buddhist-title ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .buddhist-title ul li{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        padding-left: 5px;
+        color: #7F5D58;
+    }
+    .buddhist-chapter-tips{
+        color: #9D5F00;
+        margin-bottom: 20px;
+        padding-left: 15px;
+    }
+    .chapter-content{
+        color: #666666;
+        margin-bottom: 20px;
+    }
+    .chapter-content .chapter-item{
+        height: 40px;
+        line-height: 40px;
+        margin-top: 10px;
+    }
+    .chapter-content .chapter-item span{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        background-color: #fefefe;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: 1px solid #d3c5c1;
+        border-left: none;
+        padding: 0 15px;
+        transition: all .3s;
+    }
+</style>
+<body>
+<div class="header">
+    <a href="javascript:void(0)" class="select"><i class="fa fa-chevron-left"></i></a>
+    <span class="header-title">红楼梦</span>
+    <a href="" class="search"><i class="fa fa-question-circle-o"></i></a>
+</div>
+<div class="main">
+    <div class="buddhist-intro">
+        <div class="buddhist-head">
+            <div class="buddhist-img">
+                <img src="../image/book_test.jpg" alt="红楼梦">
+            </div>
+            <div class="buddhist-title">
+                <ul>
+                    <li><b>红楼梦</b></li>
+                    <li>清朝 | 冯梦龙</li>
+                </ul>
+            </div>
+        </div>
+        <p>
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+        </p>
+        <p>
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+            红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+        </p>
+    </div>
+    <div class="buddhist-chapter-tips">
+        <span>章节列表：</span>
+    </div>
+    <div class="chapter-content">
+        <div class="chapter-item"><span>第一回 小雨淅淅沥沥下不停 大于瓢泼就像喝水</span></div>
+        <div class="chapter-item"><span>第二回 用来为盒状模型提供最大的灵活性</span></div>
+        <div class="chapter-item"><span>第三回 小雨淅淅沥沥下不停 大于瓢泼就像喝水</span></div>
+        <div class="chapter-item"><span>第四回 弹性布局沥沥下不停 弹性布局</span></div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    $(".chapter-content .chapter-item span").on("click",function () {
+        $(this).css({"background-color":"#b38859","color":"#ffffff"});
+        setTimeout(function () {
+            window.location.href = "./buddhistChapterSrc.html";
+        },300);
+    });
+</script>
+</html>
