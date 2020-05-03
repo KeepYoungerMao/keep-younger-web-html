@@ -5,199 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/book/book.css">
     <title>古籍</title>
 </head>
-<style>
-    body{
-        margin: 0;
-        padding: 0;
-        font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
-    }
-    .header{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
-        line-height: 50px;
-        font-size: 18px;
-        text-align: center;
-        border-bottom: 1px solid #f1f1f1;
-        z-index: 100;
-        display: inline-flex;
-        background-color: #ffffff;
-    }
-    .header .header-title{
-        width: 70%;
-    }
-    .header .select{
-        width: 15%;
-        color: #666666;
-    }
-    .header .search{
-        width: 15%;
-        color: #666666;
-    }
-    .main{
-        margin-top: 50px;
-        padding: 10px;
-    }
-    .book-item{
-        position: relative;
-        display: inline-flex;
-        height: 150px;
-        width: 100%;
-        background-color: #ffffff;
-        box-shadow: 0 0 20px #eeeeee;
-        margin-bottom: 20px;
-    }
-    .book-item .book-score{
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-color: orange;
-        color: #ffffff;
-        width: 30px;
-        height: 30px;
-        font-size: 15px;
-        text-align: center;
-        line-height: 30px;
-    }
-    .book-item .book-image{
-        box-sizing: border-box;
-        width: 28%;
-        height: 100%;
-    }
-    .book-item .book-image img{
-        height: 100%;
-        width: 100%;
-    }
-    .book-item .book-content{
-        box-sizing: border-box;
-        width: 72%;
-        height: 100%;
-        padding: 5px;
-    }
-    .book-item .book-content .book-title{
-        height: 40px;
-        box-sizing: border-box;
-        text-indent: 10px;
-        line-height: 40px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .book-item .book-content .book-author{
-        height: 30px;
-        line-height: 30px;
-        box-sizing: border-box;
-        text-indent: 10px;
-        color: #b4976c;
-    }
-    .book-item .book-content .book-intro{
-        height: 70px;
-        box-sizing: border-box;
-        text-indent: 10px;
-        color: #888888;
-        font-size: 15px;
-        line-height: 150%;
-    }
-    .book-item .book-content .book-intro .book-intro-title{
-        background-color: #62a717;
-        color: #ffffff;
-        border-radius: 4px;
-        padding: 0 4px;
-    }
-    .select-zzc{
-        position: fixed;
-        z-index: 200;
-        top: 0;
-        left: -1000px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        background-color: rgba(153,153,153,0.8);
-        transition: left .3s;
-    }
-    .select-box{
-        height: 94%;
-        width: 94%;
-        margin-left: 3%;
-        margin-top: 3%;
-        box-sizing: border-box;
-        background-color: #ffffff;
-    }
-    .book-type{
-        display: inline-flex;
-        width: 100%;
-        padding-left: 15px;
-    }
-    .book-types{
-        box-sizing: border-box;
-        width: 24%;
-        text-align: center;
-        height: 46px;
-    }
-    .book-type-item{
-        border: 1px solid #e1e1e1;
-        border-radius: 5px;
-        display: block;
-        width: 80px;
-        height: 30px;
-        margin-top: 8px;
-        line-height: 30px;
-        color: #666666;
-        font-size: 15px;
-    }
-    .book-type-item-active{
-        border: 1px solid orange;
-        color: orange;
-    }
-    .book-type-title{
-        height: 40px;
-        line-height: 40px;
-        padding-left: 15px;
-        color: #b4976c;
-        text-align: center;
-    }
-    .book-type-close{
-        text-align: right;
-        height: 46px;
-        line-height: 46px;
-        font-size: 20px;
-        color: #888888;
-    }
-    .book-type-close i{
-        padding: 0 15px;
-    }
-    .book-foot{
-        height: 50px;
-        line-height: 50px;
-        display: inline-flex;
-        width: 100%;
-        padding: 0 10%;
-        margin-top: 40px;
-    }
-    .book-btn{
-        width: 40%;
-        text-align: center;
-    }
-    .book-btn button{
-        width: 80%;
-        height: 70%;
-        letter-spacing: 4px;
-        font-size: 16px;
-        border: transparent;
-        outline: none;
-    }
-    .book-btn-cancel button{
-        background-color: #e1e1e1;
-        color: #888888;
-    }
-    .book-btn-yes button{
-        background-color: #04c025;
-        color: #ffffff;
-    }
-</style>
 <body>
 <div class="header">
     <a href="javascript:openBookType()" class="select"><i class="fa fa-bars"></i></a>
@@ -205,26 +15,34 @@
     <a href="" class="search"><i class="fa fa-search"></i></a>
 </div>
 <div class="main">
-    <div class="book-item">
-        <div class="book-score">9.8</div>
-        <div class="book-image">
-            <img src="../image/book_test.jpg" alt="红楼梦">
-        </div>
-        <div class="book-content">
-            <div class="book-title">红楼梦</div>
-            <div class="book-intro">
-                <span class="book-intro-title">导读</span>
-                <span>红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</span>
-                <span style="font-weight: bold;color: #666666">【莲花】</span>
+    <div id="book-item">
+        <div class="book-item">
+            <div class="book-score">9.8</div>
+            <div class="book-image">
+                <img src="../image/book_test.jpg" alt="红楼梦">
             </div>
-            <div class="book-author">
-                <span>清朝</span>
-                <span style="color: #666666"> | </span>
-                <span>传记</span>
-                <span style="color: #666666"> | </span>
-                <span>盘应龙</span>
+            <div class="book-content">
+                <div class="book-title">红楼梦</div>
+                <div class="book-intro">
+                    <span class="book-intro-title">导读</span>
+                    <span>红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</span>
+                    <span style="font-weight: bold;color: #666666">【莲花】</span>
+                </div>
+                <div class="book-author">
+                    <span>清朝</span>
+                    <span style="color: #666666"> | </span>
+                    <span>传记</span>
+                    <span style="color: #666666"> | </span>
+                    <span>盘应龙</span>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="book-loading">
+        <i class="fa fa-spinner fa-pulse"></i>
+    </div>
+    <div class="book-load-error">
+        <span>加载错误，请求失败</span>
     </div>
 </div>
 <!--弹框-->
@@ -233,126 +51,139 @@
         <div class="book-type-close">
             <i class="fa fa-close" onclick="closeBookType()"></i>
         </div>
+        <div class="book-type-title"><span>----------- 基本 -----------</span></div>
+        <div id="book-param-free">
+            <div class="book-type">
+                <div class="book-types"></div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="1">免费</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="0">收费</span>
+                </div>
+                <div class="book-types"></div>
+            </div>
+        </div>
         <div class="book-type-title"><span>----------- 朝代 -----------</span></div>
-        <div>
+        <div id="book-param-dynasty">
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">先秦</span>
+                    <span class="book-type-item" data-id="1">先秦</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">秦朝</span>
+                    <span class="book-type-item" data-id="2">秦朝</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">汉朝</span>
+                    <span class="book-type-item" data-id="3">汉朝</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">三国时期</span>
+                    <span class="book-type-item" data-id="4">三国时期</span>
                 </div>
             </div>
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">东西晋</span>
+                    <span class="book-type-item" data-id="5">东西晋</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">南北朝</span>
+                    <span class="book-type-item" data-id="6">南北朝</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">隋朝</span>
+                    <span class="book-type-item" data-id="7">隋朝</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">唐朝</span>
-                </div>
-            </div>
-            <div class="book-type">
-                <div class="book-types">
-                    <span class="book-type-item">五代十国</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">宋朝</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">元朝</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">明朝</span>
+                    <span class="book-type-item" data-id="8">唐朝</span>
                 </div>
             </div>
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">清朝</span>
+                    <span class="book-type-item" data-id="9">五代十国</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">民国近代</span>
+                    <span class="book-type-item" data-id="10">宋朝</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">现代</span>
+                    <span class="book-type-item" data-id="11">元朝</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="12">明朝</span>
+                </div>
+            </div>
+            <div class="book-type">
+                <div class="book-types">
+                    <span class="book-type-item" data-id="13">清朝</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="14">民国近代</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="15">现代</span>
                 </div>
             </div>
         </div>
         <div class="book-type-title"><span>----------- 类型 -----------</span></div>
-        <div>
+        <div id="book-param-type">
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">传记</span>
+                    <span class="book-type-item" data-id="1">传记</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">佛教</span>
+                    <span class="book-type-item" data-id="2">佛教</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">军事</span>
+                    <span class="book-type-item" data-id="3">军事</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">农业</span>
+                    <span class="book-type-item" data-id="4">农业</span>
                 </div>
             </div>
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">医学</span>
+                    <span class="book-type-item" data-id="5">医学</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">历史演义</span>
+                    <span class="book-type-item" data-id="6">历史演义</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">史记</span>
+                    <span class="book-type-item" data-id="7">史记</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">地理</span>
-                </div>
-            </div>
-            <div class="book-type">
-                <div class="book-types">
-                    <span class="book-type-item">小传</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">武侠</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">百科</span>
-                </div>
-                <div class="book-types">
-                    <span class="book-type-item">神魔</span>
+                    <span class="book-type-item" data-id="8">地理</span>
                 </div>
             </div>
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">笔记</span>
+                    <span class="book-type-item" data-id="9">小传</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">算术</span>
+                    <span class="book-type-item" data-id="10">武侠</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">评书</span>
+                    <span class="book-type-item" data-id="11">百科</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">诗词</span>
+                    <span class="book-type-item" data-id="12">神魔</span>
                 </div>
             </div>
             <div class="book-type">
                 <div class="book-types">
-                    <span class="book-type-item">音乐</span>
+                    <span class="book-type-item" data-id="13">笔记</span>
                 </div>
                 <div class="book-types">
-                    <span class="book-type-item">风水</span>
+                    <span class="book-type-item" data-id="14">算术</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="15">评书</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="16">诗词</span>
+                </div>
+            </div>
+            <div class="book-type">
+                <div class="book-types">
+                    <span class="book-type-item" data-id="17">音乐</span>
+                </div>
+                <div class="book-types">
+                    <span class="book-type-item" data-id="18">风水</span>
                 </div>
             </div>
         </div>
@@ -368,33 +199,6 @@
 </div>
 </body>
 <script src="../js/jquery-1.11.3.js"></script>
-<script>
-    //古籍选择关闭
-    function closeBookType() {
-        $("#book-type").css("left","-1000px");
-        setTimeout(function () {
-            $("#book-type").hide();
-        },300);
-    }
-    //古籍选择开启
-    function openBookType() {
-        $("#book-type").show();
-        setTimeout(function () {
-            $("#book-type").css("left","0");
-        },100);
-    }
-    //古籍选择清空
-    function clearBookType() {
-        $("#book-type").find(".book-type-item").removeClass("book-type-item-active");
-    }
-    //估计选择确认
-    function confirmBookType() {
-        closeBookType();
-    }
-    //古籍选择的点击
-    $(".book-type-item").on("click",function () {
-        $(this).parent().parent().parent().find(".book-type-item").removeClass("book-type-item-active");
-        $(this).addClass("book-type-item-active");
-    });
-</script>
+<script src="../js/main.js"></script>
+<script src="../js/book/book.js"></script>
 </html>
