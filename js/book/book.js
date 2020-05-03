@@ -60,8 +60,8 @@ function loadBookSuccessDo(data) {
         loadBookErrorDo(false);
     }else {
         for (let i = 0; i < data.length; i++){
-            let html = '<div class="book-item">\n' +
-                '            <div class="book-score">9.8</div>\n' +
+            let html = '<div class="book-item" onclick="pageBookSrc('+data[i].id+')">\n' +
+                '            <div class="book-score">'+data[i].score+'</div>\n' +
                 '            <div class="book-image">\n' +
                 '                <img src="'+REQUEST_URL + data[i].s_image+'" alt="'+data[i].name+'">\n' +
                 '            </div>\n' +
@@ -69,8 +69,8 @@ function loadBookSuccessDo(data) {
                 '                <div class="book-title">'+data[i].name+'</div>\n' +
                 '                <div class="book-intro">\n' +
                 '                    <span class="book-intro-title">导读</span>\n' +
-                '                    <span>红楼梦是当代Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</span>\n' +
-                '                    <span style="font-weight: bold;color: #666666">【莲花】</span>\n' +
+                '                    <span>'+data[i].guide+'</span>\n' +
+                '                    <span style="font-weight: bold;color: #666666">【'+data[i].guide_auth+'】</span>\n' +
                 '                </div>\n' +
                 '                <div class="book-author">\n' +
                 '                    <span>'+data[i].dynasty+'</span>\n' +
@@ -93,7 +93,7 @@ function clearBookData() {
 
 //查询失败处理
 function loadBookErrorDo(status) {
-    $(".book-load-error span").html(status ? "加载错误，请求失败" : "已经没有了");
+    $(".book-load-error span").html(status ? "加载错误，请求失败" : "没有数据了");
     $(".book-load-error").show();
 }
 
@@ -162,3 +162,8 @@ $(document).ready(function () {
         }
     });
 });
+
+//古籍点击事件
+function pageBookSrc(id) {
+    window.location.href = 'bookSrc.html?id=' + id;
+}
