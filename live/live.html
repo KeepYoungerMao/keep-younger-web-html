@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../player/video.css">
+    <title>电视直播</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+        background-color: #f1f1f1;
+    }
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        z-index: 100;
+        display: inline-flex;
+        background-color: #ffffff;
+    }
+    .header .header-title{
+        width: 70%;
+        font-size: 16px;
+    }
+    .header .select{
+        width: 15%;
+        color: #666666;
+    }
+    .header .search{
+        width: 15%;
+        color: #666666;
+    }
+    .video{
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        height: 240px;
+        z-index: 100;
+    }
+    #my_video{
+        width: 100%;
+        height: 240px;
+    }
+    .mao-video-menu{
+        position: fixed;
+        top: 295px;
+        left: 2px;
+        right: 2px;
+        height: 40px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        display: flex;
+        background-color: #ffffff;
+    }
+    .mao-video-select{
+        position: fixed;
+        top: 340px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        box-sizing: border-box;
+        background-color: #f1f1f1;
+        overflow-y: auto;
+    }
+    .menu-item{
+        width: 20%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .menu-item-active{
+        color: orange;
+    }
+    .select-item{
+        height: 70px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        line-height: 70px;
+        margin-bottom: 4px;
+        display: flex;
+        width: 100%;
+        box-shadow: 0 0 2px #e1e1e1;
+    }
+    .select-item .select-item-img{
+        width: 28%;
+        text-align: center;
+    }
+    .select-item .select-item-img img{
+        width: 90%;
+        height: 100%;
+    }
+    .select-item .select-item-content{
+        width: 72%;
+        box-sizing: border-box;
+        padding-left: 15px;
+    }
+    .select-item .select-item-title{
+        height: 40px;
+        line-height: 46px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .select-item .select-item-etc{
+        height: 30px;
+        line-height: 26px;
+        color: #888888;
+        font-size: 14px;
+    }
+    .video-select-common{
+        display: none;
+    }
+    .video-select-active{
+        display: block;
+    }
+</style>
+<body>
+<div class="header">
+    <a href="javascript:void(0)" class="select"><i class="fa fa-bars"></i></a>
+    <span class="header-title">CCTV-1 综合频道</span>
+    <a href="" class="search"><i class="fa fa-search"></i></a>
+</div>
+<div class="video">
+    <section>
+        <video id="my_video" class="video-js vjs-default-skin vjs-big-play-centered" poster="">
+            <source src="//ivi.bupt.edu.cn/hls/cctv1hd.m3u8" type="application/x-mpegURL" id="target">
+        </video>
+    </section>
+</div>
+<div class="mao-video-menu">
+    <div class="menu-item menu-item-active" data-id="video-gq"><span>高清</span></div>
+    <div class="menu-item" data-id="video-ys"><span>央视</span></div>
+    <div class="menu-item" data-id="video-bj"><span>北京</span></div>
+    <div class="menu-item" data-id="video-ws"><span>卫视</span></div>
+    <div class="menu-item" data-id="video-wy"><span>外源</span></div>
+</div>
+<div class="mao-video-select">
+    <div id="video-gq" class="video-select-common video-select-active">
+        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-1 综合频道')">
+            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
+            <div class="select-item-content">
+                <div class="select-item-title">CCTV-1 综合频道</div>
+                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
+            </div>
+        </div>
+    </div>
+    <div id="video-ys" class="video-select-common">
+        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-2 综合频道')">
+            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
+            <div class="select-item-content">
+                <div class="select-item-title">CCTV-2 综合频道</div>
+                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
+            </div>
+        </div>
+    </div>
+    <div id="video-bj" class="video-select-common">
+        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-3 综合频道')">
+            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
+            <div class="select-item-content">
+                <div class="select-item-title">CCTV-3 综合频道</div>
+                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
+            </div>
+        </div>
+    </div>
+    <div id="video-ws" class="video-select-common">
+        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-4 电影频道')">
+            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
+            <div class="select-item-content">
+                <div class="select-item-title">CCTV-4 电影频道</div>
+                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
+            </div>
+        </div>
+    </div>
+    <div id="video-wy" class="video-select-common">
+        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','外 BTV')">
+            <div class="select-item-img"><img src="../image/live/other.jpg" alt="CCTV-1"></div>
+            <div class="select-item-content">
+                <div class="select-item-title">外 BTV</div>
+                <div class="select-item-etc">美国 · 旧金山 · 映射</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/main.js"></script>
+<script src="../player/video.js"></script>
+<script src="../player/videojs-contrib-hls.js"></script>
+<script>
+    //自动播放：video标签中添加：autoplay="autoplay" muted
+    let videoObj = videojs("my_video",{controls:true,autoplay:true});
+
+    //点击播放
+    function toPlayVideo(src,name) {
+        videoObj.src({src:src,type:"application/x-mpegURL"});
+        videoObj.play();
+        $(".header-title").html(name);
+    }
+
+    //切换来源
+    $(".menu-item").on("click",function () {
+        $(this).addClass("menu-item-active").siblings().removeClass("menu-item-active");
+        let id = $(this).attr("data-id");
+        $("#"+id).addClass("video-select-active").siblings().removeClass("video-select-active");
+    });
+</script>
+</html>
