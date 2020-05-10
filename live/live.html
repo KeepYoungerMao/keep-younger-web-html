@@ -135,7 +135,7 @@
 <div class="video">
     <section>
         <video id="my_video" class="video-js vjs-default-skin vjs-big-play-centered" poster="">
-            <source src="//ivi.bupt.edu.cn/hls/cctv1hd.m3u8" type="application/x-mpegURL" id="target">
+            <source src="http://ivi.bupt.edu.cn/hls/cctv1.m3u8" type="application/x-mpegURL" id="target">
         </video>
     </section>
 </div>
@@ -148,50 +148,18 @@
 </div>
 <div class="mao-video-select">
     <div id="video-gq" class="video-select-common video-select-active">
-        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-1 综合频道')">
+        <!--<div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-1 综合频道')">
             <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
             <div class="select-item-content">
                 <div class="select-item-title">CCTV-1 综合频道</div>
                 <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
             </div>
-        </div>
+        </div>-->
     </div>
-    <div id="video-ys" class="video-select-common">
-        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-2 综合频道')">
-            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
-            <div class="select-item-content">
-                <div class="select-item-title">CCTV-2 综合频道</div>
-                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
-            </div>
-        </div>
-    </div>
-    <div id="video-bj" class="video-select-common">
-        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-3 综合频道')">
-            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
-            <div class="select-item-content">
-                <div class="select-item-title">CCTV-3 综合频道</div>
-                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
-            </div>
-        </div>
-    </div>
-    <div id="video-ws" class="video-select-common">
-        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','CCTV-4 电影频道')">
-            <div class="select-item-img"><img src="../image/live/CCTV1.jpg" alt="CCTV-1"></div>
-            <div class="select-item-content">
-                <div class="select-item-title">CCTV-4 电影频道</div>
-                <div class="select-item-etc">中国 · 北京 · 北京邮电大学</div>
-            </div>
-        </div>
-    </div>
-    <div id="video-wy" class="video-select-common">
-        <div class="select-item" onclick="toPlayVideo('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8','外 BTV')">
-            <div class="select-item-img"><img src="../image/live/other.jpg" alt="CCTV-1"></div>
-            <div class="select-item-content">
-                <div class="select-item-title">外 BTV</div>
-                <div class="select-item-etc">美国 · 旧金山 · 映射</div>
-            </div>
-        </div>
-    </div>
+    <div id="video-ys" class="video-select-common"></div>
+    <div id="video-bj" class="video-select-common"></div>
+    <div id="video-ws" class="video-select-common"></div>
+    <div id="video-wy" class="video-select-common"></div>
 </div>
 </body>
 <script src="../js/jquery-1.11.3.js"></script>
@@ -201,6 +169,10 @@
 <script>
     //自动播放：video标签中添加：autoplay="autoplay" muted
     let videoObj = videojs("my_video",{controls:true,autoplay:true});
+
+    $(function () {
+        loadData();
+    });
 
     //点击播放
     function toPlayVideo(src,name) {
@@ -215,5 +187,54 @@
         let id = $(this).attr("data-id");
         $("#"+id).addClass("video-select-active").siblings().removeClass("video-select-active");
     });
+
+    //加载数据
+    function loadData() {
+        $.ajax({
+            url: REQUEST_URL + '/api/data/m3u8/live',
+            type: 'GET',
+            success: function (data) {
+                if (data.code === 200 && null != data.data && data.data.length > 0)
+                    loadDataDo(data.data);
+            }
+        });
+    }
+
+    //加载数据
+    function loadDataDo(data) {
+        for (let i = 0, len = data.length; i < len; i++){
+            switch (data[i].kind) {
+                case "高清":
+                    loadDataItem($("#video-gq"),data[i]);
+                    break;
+                case "央视":
+                    loadDataItem($("#video-ys"),data[i]);
+                    break;
+                case "北京":
+                    loadDataItem($("#video-bj"),data[i]);
+                    break;
+                case "卫视":
+                    loadDataItem($("#video-ws"),data[i]);
+                    break;
+                case "外源":
+                    loadDataItem($("#video-wy"),data[i]);
+                    break;
+            }
+        }
+    }
+
+    //加载数据2
+    function loadDataItem(e,data) {
+        if (data.useful) {
+            let html = '<div class="select-item" onclick="toPlayVideo(\''+data.url+'\',\''+data.name+'\')">\n' +
+                '            <div class="select-item-img"><img src="'+data.image+'" alt="'+data.name+'"></div>\n' +
+                '            <div class="select-item-content">\n' +
+                '                <div class="select-item-title">'+data.name+'</div>\n' +
+                '                <div class="select-item-etc">'+data.tips+'·'+data.kind+'</div>\n' +
+                '            </div>\n' +
+                '        </div>';
+            $(e).append(html);
+        }
+    }
 </script>
 </html>
